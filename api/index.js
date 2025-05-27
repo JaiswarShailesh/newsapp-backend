@@ -47,7 +47,7 @@ app.get("/news/top-headlines", async (req, res) => {
         apiKey: API_KEY,
       },
     });
-
+    console.log(`${BASE_URL}/top-headlines`, API_KEY)
     res.json(response.data);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch news" });
