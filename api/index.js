@@ -27,6 +27,7 @@ app.get("/news/everything", async (req, res) => {
       },
     });
 
+    console.log(`${BASE_URL}/everything`, API_KEY)
     res.json(response.data);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch news" });
