@@ -10,13 +10,10 @@ app.use(cors());
 
 const BASE_URL = "https://newsapi.org/v2";
 const API_KEY = process.env.NEWS_API_KEY; // Store your API key in .env
-    console.log(`${BASE_URL}/top-headlines`, API_KEY)
 // Route for `everything` endpoint
 app.get("/news/everything", async (req, res) => {
   try {
-        console.log(`${BASE_URL}/everything`, API_KEY)
     const { q, from, to, sortBy, language } = req.query;
-
     const response = await axios.get(`${BASE_URL}/everything`, {
       params: {
         q,
@@ -31,7 +28,7 @@ app.get("/news/everything", async (req, res) => {
 
     res.json(response.data);
   } catch (error) {
-      console.error("News API error:", error.response?.data || error.message);
+    // console.error("News API error:", error.response?.data || error.message);
     res.status(500).json({ error: "Failed to fetch news" });
   }
 });
@@ -39,9 +36,7 @@ app.get("/news/everything", async (req, res) => {
 // Route for `top-headlines` endpoint
 app.get("/news/top-headlines", async (req, res) => {
   try {
-        console.log(`${BASE_URL}/top-headlines`, API_KEY)
     const { country, category, language } = req.query;
-
     const response = await axios.get(`${BASE_URL}/top-headlines`, {
       params: {
         country: country || "us",
@@ -53,7 +48,7 @@ app.get("/news/top-headlines", async (req, res) => {
 
     res.json(response.data);
   } catch (error) {
-      console.error("News API error:", error.response?.data || error.message);
+    // console.error("News API error:", error.response?.data || error.message);
     res.status(500).json({ error: "Failed to fetch news" });
   }
 });
