@@ -10,7 +10,7 @@ app.use(cors());
 
 const BASE_URL = "https://newsapi.org/v2";
 const API_KEY = process.env.NEWS_API_KEY; // Store your API key in .env
-
+    console.log(`${BASE_URL}/top-headlines`, API_KEY)
 // Route for `everything` endpoint
 app.get("/news/everything", async (req, res) => {
   try {
