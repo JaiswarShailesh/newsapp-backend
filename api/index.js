@@ -14,6 +14,7 @@ const API_KEY = process.env.NEWS_API_KEY; // Store your API key in .env
 // Route for `everything` endpoint
 app.get("/news/everything", async (req, res) => {
   try {
+        console.log(`${BASE_URL}/everything`, API_KEY)
     const { q, from, to, sortBy, language } = req.query;
 
     const response = await axios.get(`${BASE_URL}/everything`, {
@@ -27,7 +28,7 @@ app.get("/news/everything", async (req, res) => {
       },
     });
 
-    console.log(`${BASE_URL}/everything`, API_KEY)
+
     res.json(response.data);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch news" });
@@ -37,6 +38,7 @@ app.get("/news/everything", async (req, res) => {
 // Route for `top-headlines` endpoint
 app.get("/news/top-headlines", async (req, res) => {
   try {
+        console.log(`${BASE_URL}/top-headlines`, API_KEY)
     const { country, category, language } = req.query;
 
     const response = await axios.get(`${BASE_URL}/top-headlines`, {
@@ -47,7 +49,7 @@ app.get("/news/top-headlines", async (req, res) => {
         apiKey: API_KEY,
       },
     });
-    console.log(`${BASE_URL}/top-headlines`, API_KEY)
+
     res.json(response.data);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch news" });
