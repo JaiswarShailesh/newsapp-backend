@@ -48,7 +48,7 @@ app.get("/news/top-headlines", async (req, res) => {
 
     res.json(response.data);
   } catch (error) {
-    // console.error("News API error:", error.response?.data || error.message);
+    console.error("News API error:", error.response?.data || error.message);
     res.status(500).json({ error: "Failed to fetch news" });
   }
 });
